@@ -29,6 +29,22 @@ header a {
   text-decoration: none;
 }
 
+/* new workout form */
+label,
+input {
+  display: block;
+}
+
+input {
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
 .pages {
   max-width: 1400px;
   padding: 20px;
@@ -53,7 +69,7 @@ header a {
   margin: 20px auto;
   padding: 20px;
   position: relative;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.05);
 }
 
 .workout-details h4 {
@@ -68,7 +84,8 @@ header a {
   color: #555;
 }
 
-.workout-details span {
+.workout-details span,
+.workout-form span {
   position: absolute;
   top: 20px;
   right: 20px;
@@ -79,17 +96,17 @@ header a {
   color: #333;
 }
 
-.no-workouts {
+.centered-text-box {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 50%;
+  padding: 20px;
 }
 
-.no-workouts p {
-  font-size: 1em;
-  margin: 20px auto;
+.centered-text-box p {
+  margin: 10px auto;
 }
 
 .no-workouts span {
@@ -97,23 +114,7 @@ header a {
   color: var(--primary);
 }
 
-/* new workout form */
-label,
-input {
-  display: block;
-}
-
-input {
-  padding: 10px;
-  margin-top: 10px;
-  margin-bottom: 20px;
-  width: 100%;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
-form button {
+.submit {
   background: var(--primary);
   border: 0;
   color: #fff;
@@ -123,13 +124,14 @@ form button {
   cursor: pointer;
 }
 
-div.error {
-  padding: 10px;
+div.error,
+p.error {
+  padding: 5px;
   background: #ffefef;
   border: 1px solid var(--error);
   color: var(--error);
   border-radius: 4px;
-  margin: 20px 0;
+  margin-bottom: 10px;
 }
 
 input.error {
@@ -168,4 +170,146 @@ form.login {
   padding: 20px;
   background: #fff;
   border-radius: 4px;
+}
+
+form.workout-form {
+  position: relative;
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 4px;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 50px;
+  border-radius: 8px;
+  z-index: 1000;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+}
+
+.modal .close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 0.85em;
+  cursor: pointer;
+  padding: 0px;
+  color: #333;
+}
+
+.exercise-form {
+  min-width: 500px;
+}
+
+.add {
+  position: relative;
+  left: 50%;
+  translate: -50%;
+  border-radius: 50%;
+  background: var(--primary);
+  color: #fff;
+  font-weight: bold;
+  border: 0;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.done {
+  bottom: 0;
+  width: 50px;
+  color: var(--primary);
+  background: transparent;
+  font-size: 2em;
+  font-weight: bold;
+  border-radius: 50%;
+  border: 0;
+  cursor: pointer;
+}
+
+.set-form .done {
+  position: relative;
+  height: 100%;
+  top: 10px;
+}
+
+.set-titles {
+  display: flex;
+}
+
+.set-titles h3 {
+  width: 33%;
+}
+
+.set-container {
+  margin-bottom: 20px;
+}
+
+.set-form {
+  display: flex;
+  position: relative;
+}
+
+.set-form label {
+  font-weight: bold;
+}
+
+.bottom-right {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+
+.green-small {
+  color: var(--primary);
+  font-size: 0.85em;
+}
+
+.set-display {
+  display: flex;
+}
+
+.set-display p {
+  width: 33%;
+  margin-top: 0px;
+}
+
+.set-field {
+  width: 33%;
+  margin-right: 20px;
+}
+
+.set-field p.error {
+  font-size: 0.7em;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.green-box {
+  background: #1aac8340;
+  border-radius: 4px;
+  margin: 20px auto;
+  padding: 5px 20px;
+  position: relative;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.05);
+}
+
+.line {
+  border: 1px solid black;
 }

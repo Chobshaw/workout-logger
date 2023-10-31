@@ -28,7 +28,9 @@ export default function Login() {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-      <button disabled={isLoading}>Log in</button>
+      <button className="submit" disabled={isLoading}>
+        Log in
+      </button>
       {error && <div className="error">{error}</div>}
     </form>
   );

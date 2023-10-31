@@ -36,7 +36,7 @@ export default function Home() {
             <WorkoutDetails key={workout._id} workout={workout} />
           ))}
         {workouts && workouts.length === 0 && (
-          <div className="box no-workouts">
+          <div className="box centered-text-box no-workouts">
             <p>You haven't recorded any workouts yet.</p>
             <p>Create your first workout using the form on the right!</p>
             <span className="material-symbols-outlined">arrow_right_alt</span>

@@ -25,30 +25,53 @@ export async function createNewWorkout(
   req: RequestWithUser,
   res: express.Response
 ) {
-  const { title, load, reps } = req.body;
+  const { title, description, exercises } = req.body;
 
-  const emptyFields = ["title", "load", "reps"].filter(
-    (field) => !req.body[field]
-  );
-
-  if (emptyFields.length > 0) {
+  if (!title) {
     return res.status(400).json({
-      error: "Please fill in all fields before submitting.",
-      emptyFields,
+      error: "Please give your workout a title.",
     });
+  }
+
+  if (!exercises || exercises.length === 0) {
+    return res.status(400).json({
+      error: "Please add at least one exercise to your workout.",
+    });
+  }
+
+  for (let { name, sets } of exercises) {
+    if (!name) {
+      return res.status(400).json({
+        error: "Please provide a name for your exercise.",
+      });
+    }
+
+    if (!sets || sets.length === 0) {
+      return res.status(400).json({
+        error: `Please add at least one set to your exercise: ${name}.`,
+      });
+    }
+
+    for (let { load, reps, setCount } of sets) {
+      if (!load || !reps || !setCount) {
+        return res.status(400).json({
+          error: `One or more of your sets for ${name} contain missing fields. Please fill in all fields.`,
+        });
+      }
+    }
   }
 
   try {
     const workout = await createWorkout({
-      userId: req.user._id,
       title,
-      load,
-      reps,
+      description,
+      exercises,
+      userId: req.user._id,
     });
     return res.status(200).json(workout);
   } catch (error) {
     console.log(error);
-    return res.status(400).json({ error: error.message, emptyFields });
+    return res.status(400).json({ error: error.message });
   }
 }
 

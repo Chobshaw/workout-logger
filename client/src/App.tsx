@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
+import Form from "./pages/Form";
 import { useAuthContext } from "./hooks/useAuthContext";
 
 export default function App() {
@@ -26,6 +27,7 @@ export default function App() {
               path="/login"
               element={!user ? <Login /> : <Navigate to="/" />}
             />
+            <Route path="/form" element={user && <Form />} />
           </Routes>
         </div>
       </BrowserRouter>
